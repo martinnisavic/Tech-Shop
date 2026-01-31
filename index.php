@@ -2,14 +2,13 @@
 
 ?>
 <!DOCTYPE html>
-<html>
-    <head>
-
-    </head>
+    <?php
+        require_once ("views/head.php");
+    ?>
     <body>
         <?php
-        require_once ("views/head.php");
-        require_once ("views/nav.php");
+        require_once ("views/nav.php");//zatvoriti prvi div
+        require_once ("views/first_div.php");
         ?>
     </body>
 </html>

@@ -2,3 +2,36 @@
     margin: 0px;
     padding: 0px;
 }
+
+#first-div{
+    height: 70vh;
+    width: 100vw;
+
+    background-image: url('../assets/img/laptop_closed.jpg');
+    background-color: black;
+}
+
+#logo-div{
+    width: 30%;
+        justify-content: center;
+    display: flex;
+}
+
+#logo-div img{
+    width: 50%;
+}
+
+
+#home-page-headline{
+    width: 60%;
+    margin: 0px auto;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#home-page-headline button{
+    width: 30%;
+}
