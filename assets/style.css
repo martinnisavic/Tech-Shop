@@ -3,11 +3,28 @@
     padding: 0px;
 }
 
+.show{
+    display: flex;
+}
+
+.hide{
+    display: none;
+}
+
+.w-50{
+    width: 30%!important;
+}
+
+.w-80{
+    width: 30%!important;
+}
+
 #first-div{
     height: 70vh;
-    width: 100vw;
+    width: 100%;
 
     background-image: url('../assets/img/laptop_closed.jpg');
+    background-position: center;
     background-color: black;
 }
 
@@ -18,7 +35,7 @@
 }
 
 #logo-div img{
-    width: 50%;
+    width: 10%;
 }
 
 
@@ -34,4 +51,16 @@
 
 #home-page-headline button{
     width: 30%;
+}
+
+#new-arrivals{
+    flex-wrap: wrap;
+}
+
+.new-arr-card-img{
+    width: 100%;
+}
+
+.new-arr-card-img img{
+    width: 100%;
 }
