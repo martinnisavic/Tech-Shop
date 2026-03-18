@@ -1,0 +1,78 @@
+
+.container.my-5 {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-md-4.border {
+    border: none !important; 
+    border-radius: 15px !important;
+    padding: 40px !important;
+    background: #ffffff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Naslov "Prijava" */
+h2 {
+    font-weight: 700;
+    color: #333;
+    letter-spacing: -1px;
+}
+
+
+.form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+/* Stil za Input polja */
+.form-control {
+    height: 50px;
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid #e1e1e1;
+    padding-left: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Efekat kada se klikne u polje (Focus) */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.1);
+    outline: none;
+}
+
+/* Glavno dugme "Uloguj se" */
+.btn-primary {
+    height: 50px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+/* Efekat na dugme pri prelasku mišem */
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px); /* Lagano se podigne */
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Link za registraciju */
+.text-decoration-none {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.text-decoration-none:hover {
+    text-decoration: underline !important;
+}

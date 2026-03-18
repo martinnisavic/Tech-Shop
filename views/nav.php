@@ -1,7 +1,7 @@
 <?php
-    include("../Tech-Shop/konekcija/konekcija.php");
+    include_once("../Tech-Shop/konekcija/konekcija.php");
     $query="SELECT * FROM `links` WHERE 1";
-    $links= IzvrsiSelectUpit($query, $db);
+    $links= IzvrsiSelectUpit($query, true);
     echo "<div id='first-div'>";
     if ($links) {
         echo "<div class='d-flex justify-content-around'><div>";
@@ -12,7 +12,7 @@
                 if ($counter==2) {
                     break;
                 }
-                echo "<li><a href='".$link['path']."'>".$link['text']."</a></li>";
+                echo "<li><a href='index.php?stranica=".$link['path']."'>".$link['text']."</a></li>";
                 $counter++;
             }
              echo "</ul></nav></div>";
@@ -32,7 +32,7 @@
         foreach($links as $link)
             {
                 if ($counter>=2) {
-                    echo "<li><a href='".$link['path']."'>".$link['text']."</a></li>";
+                    echo "<li><a href='index.php?stranica=".$link['path']."'>".$link['text']."</a></li>";
                 }
 
                 if ($counter==4) {
