@@ -10,13 +10,13 @@ $reg_username='';
 $reg_telefon='';
 $greske=0;
 
-if (isset($_POST['ime']) && preg_match($reg_ime),$_POST['ime']) {
+if (isset($_POST['ime']) && preg_match($reg_ime,$_POST['ime'])) {
     $ime=$_POST['ime'];
 }
 else{
     $greske++;
 }
-if (isset($_POST['prezime']) && preg_match($reg_prezime),$_POST['prezime']) {
+if (isset($_POST['prezime']) && preg_match($reg_prezime,$_POST['prezime'])) {
     $prezime=$_POST['prezime'];
 }
 else{

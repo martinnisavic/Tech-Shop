@@ -1,6 +1,6 @@
 <?php
     include_once("./konekcija/konekcija.php");
-    $slika=IzvrsiSelectUpit("SELECT * FROM `images` WHERE tip LIKE 'ReklamnaSlikaHomePage'",false);
+    $slika=IzvrsiSelectUpit("SELECT * FROM `images` WHERE `tip` LIKE 'ReklamnaSlikaHomePage'",false);
     echo"
         <div id='add-wrapp'>
             <div id='add-image-container'>
