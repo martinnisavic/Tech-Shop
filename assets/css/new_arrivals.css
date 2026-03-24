@@ -1,0 +1,27 @@
+#new-arrivals{
+    width: 90%;
+    flex-wrap: wrap;
+    padding:5%;
+    margin: 10px auto;
+}
+
+.new-product-card{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.new-arr-card-img img{
+    width: 50%;
+}
+
+.new-arr-card-img {
+    display: flex;
+    justify-content: center;
+}
+
+.new-product-card button{
+    width: 50%;
+    margin: 0px auto;
+}

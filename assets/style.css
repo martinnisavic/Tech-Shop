@@ -2,7 +2,9 @@
 @import url("css/first_div.css");
 @import url("css/register.css");
 @import url("css/login.css");
-
+@import url("css/new_arrivals.css");
+@import url("css/add_div.css");
+@import url("css/product_card_info.css");
 
 *{
     margin: 0px;
@@ -25,46 +27,6 @@
 .w-80{
     width: 30%!important;
 }
-
- 
-
-#new-arrivals{
-    flex-wrap: wrap;
-}
-
-
-.new-arr-card-img img{
-    width: 50%;
-}
-
-#add-wrapp {
-    width: 80%;
-    display: flex;
-    flex-wrap: wrap; 
-    
-    background: #f4f4f4;
-    margin: 40px auto;
-    border-radius: 8px;
-}
-
-#add-image-container {
-    width: 50%;
-    line-height: 0; /* Uklanja onaj mali razmak ispod slike */
-}
-
-#add-image-container img {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Ako je slika drugačijih proporcija, popuniće prostor */
-}
-
-#add-text-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-
 
 #footer {
     background-color: black;

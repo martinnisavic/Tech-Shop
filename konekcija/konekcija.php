@@ -5,6 +5,7 @@ $password = "";
 $db = new PDO("mysql:host=localhost;dbname=tech-shop", $username, $password);
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$db->setAttribute(PDO::FETCH_DEFAULT,PDO::FETCH_ASSOC);
 
 if ($db) {
 

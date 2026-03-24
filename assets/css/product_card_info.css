@@ -1,0 +1,21 @@
+#Product-Information{
+    width: 80%;
+    margin: 10px auto;
+}
+
+.image-buttons-container{
+
+}
+
+.image-container{
+    width: 100%;
+}
+
+.nav-buttons{
+   text-align: center; 
+}
+
+.nav-buttons button{
+    border: none;
+    margin:5px 15px;
+}

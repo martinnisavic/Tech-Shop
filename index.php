@@ -2,11 +2,16 @@
 session_start();
 $stranica = "";
 $ulogovan = false;
+$proizvodInfo=false;
 if (isset($_SESSION['ulogovan'])) {
     $ulogovan = true;
 }
 if (isset($_GET['stranica'])) {
     $stranica = $_GET['stranica'];
+}
+if (isset($_GET['idProizvoda'])){
+    $proizvodInfoId=$_GET['idProizvoda'];
+    $proizvodInfo=true;
 }
 ?>
 <!DOCTYPE html>
@@ -16,7 +21,15 @@ require_once("views/head.php");
 ?>
 
 <body>
-    <?php if (!$ulogovan): ?>
+    <?php if ($proizvodInfo):?>
+            <?php 
+                require_once("views/nav.php"); 
+                require_once("views/first_div.php");
+                require_once("views/product_card_info.php");
+                require_once("views/footer.php");
+                ?>
+    <?php  ?>
+    <?php elseif (!$ulogovan): ?>
         <?php
         switch ($stranica) {
             case 'login.php':
@@ -53,7 +66,7 @@ require_once("views/head.php");
         // require_once ("views/register.php");
         ?>
     <?php endif ?>
-    <script src="assets/main.js"></script>
+    <script type="module" src="assets/main.js"></script>
 </body>
 
 </html>
