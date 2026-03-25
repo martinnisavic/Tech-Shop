@@ -21,51 +21,40 @@ require_once("views/head.php");
 ?>
 
 <body>
-    <?php if ($proizvodInfo):?>
-            <?php 
-                require_once("views/nav.php"); 
-                require_once("views/first_div.php");
-                require_once("views/product_card_info.php");
-                require_once("views/footer.php");
-                ?>
-    <?php  ?>
-    <?php elseif (!$ulogovan): ?>
-        <?php
+    <?php 
+    require_once("views/nav.php"); 
+    require_once("views/first_div.php");
+
+    // GLAVNI KONTROLER
+    if ($proizvodInfo) {
+        require_once("views/product_card_info.php");
+    } else {
         switch ($stranica) {
             case 'login.php':
-                require_once("views/nav.php"); 
-                require_once("views/first_div.php");
                 require_once("views/login.php");
-                require_once("views/footer.php");
-                break;
-            case 'about.php':
-                require_once("views/nav.php"); 
-                require_once("views/first_div.php");
-                require_once("views/footer.php");
                 break;
             case 'register.php':
-                require_once("views/nav.php"); 
-                require_once("views/first_div.php");
                 require_once("views/register.php");
-                require_once("views/footer.php");
                 break;
             case 'shop.php':
-                require_once("views/nav.php");
-                require_once("views/first_div.php");
-                require_once("views/shop.php");                
-                require_once("views/footer.php");
+                require_once("views/shop.php");
+                break;
+            case 'about.php':
+                require_once('views/about.php');
+                break;
+            case 'cart.php': 
+                require_once("views/cart.php");
                 break;
             default:
-                require_once("views/nav.php"); 
-                require_once("views/first_div.php");
+                
                 require_once("views/new_arrivals.php");
                 require_once("views/add_div.php");
-                require_once("views/footer.php");
                 break;
         }
-        // require_once ("views/register.php");
-        ?>
-    <?php endif ?>
+    }
+
+    require_once("views/footer.php");
+    ?>
     <script type="module" src="assets/main.js"></script>
 </body>
 

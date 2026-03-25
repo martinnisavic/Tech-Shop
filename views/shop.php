@@ -44,7 +44,7 @@
 
         echo "<p>" . htmlspecialchars($p['description']) . "</p>";
         // Popravljen link (izbrisana tačka ispred zagrade i sređen href)
-        echo "<p><button><a href='shop.php?addToCart=".$p['id']."'>Add to cart</a></button></p>";
+        echo "<p><button><a href='./funkcijePhp/addToCart.php?productToCartId=".$p['id']."'>Add to cart</a></button></p>";
         echo "</div>";
     }
     ?>

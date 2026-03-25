@@ -37,6 +37,7 @@ if (isset($_GET['idProizvoda'])) {
         echo "<div class='product-Information-text'>
                 <h3>".$product['name']."</h3>        
             <p>".$product['description']."</p>
+                <button><a href='./funkcijePhp/addToCart.php?productToCartId=".$product['productId']."'>Add to cart</a></button>
                     </div>
             ";
         // echo"<div id='image-container'";
