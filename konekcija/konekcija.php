@@ -5,18 +5,20 @@ $password = "";
 $db = new PDO("mysql:host=localhost;dbname=tech-shop", $username, $password);
 
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-$db->setAttribute(PDO::FETCH_DEFAULT,PDO::FETCH_ASSOC);
+$db->setAttribute(PDO::FETCH_DEFAULT, PDO::FETCH_ASSOC);
 
 if ($db) {
 
 
-    function IzvrsiSelectUpit($query, $viseRedova)
+    function IzvrsiSelectUpit($query, $viseRedova, $params = [])
     {
         global $db;
+        $stmt = $db->prepare($query);
+        $stmt->execute($params);
         if ($viseRedova) {
-            $result = $db->query($query)->fetchAll();
+            return $stmt->fetchAll();
         } else {
-            $result = $db->query($query)->fetch();
+            return $stmt->fetch();
         }
 
         return $result;

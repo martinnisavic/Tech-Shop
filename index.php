@@ -2,16 +2,16 @@
 session_start();
 $stranica = "";
 $ulogovan = false;
-$proizvodInfo=false;
+$proizvodInfo = false;
 if (isset($_SESSION['ulogovan'])) {
     $ulogovan = true;
 }
 if (isset($_GET['stranica'])) {
     $stranica = $_GET['stranica'];
 }
-if (isset($_GET['idProizvoda'])){
-    $proizvodInfoId=$_GET['idProizvoda'];
-    $proizvodInfo=true;
+if (isset($_GET['idProizvoda'])) {
+    $proizvodInfoId = $_GET['idProizvoda'];
+    $proizvodInfo = true;
 }
 ?>
 <!DOCTYPE html>
@@ -21,8 +21,8 @@ require_once("views/head.php");
 ?>
 
 <body>
-    <?php 
-    require_once("views/nav.php"); 
+    <?php
+    require_once("views/nav.php");
     require_once("views/first_div.php");
 
     // GLAVNI KONTROLER
@@ -42,11 +42,17 @@ require_once("views/head.php");
             case 'about.php':
                 require_once('views/about.php');
                 break;
-            case 'cart.php': 
+            case 'cart.php':
                 require_once("views/cart.php");
                 break;
+            case 'logout.php':
+                require_once("views/logout.php");
+                break;
+            case 'profile.php':
+                require_once("views/profil.php");
+                break;
             default:
-                
+
                 require_once("views/new_arrivals.php");
                 require_once("views/add_div.php");
                 break;
@@ -56,6 +62,7 @@ require_once("views/head.php");
     require_once("views/footer.php");
     ?>
     <script type="module" src="assets/main.js"></script>
+    <script src="assets/logIn.js"></script>
 </body>
 
 </html>
