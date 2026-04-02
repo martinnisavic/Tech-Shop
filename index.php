@@ -51,6 +51,9 @@ require_once("views/head.php");
             case 'profile.php':
                 require_once("views/profil.php");
                 break;
+            case 'buy.php':
+                require_once("views/buy.php");
+                break;
             default:
 
                 require_once("views/new_arrivals.php");

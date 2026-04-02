@@ -21,7 +21,7 @@
 
     $query = "SELECT * FROM `socials` WHERE 1";
     $socials = IzvrsiSelectUpit($query, true);
-    echo"<div id='socials-wrap'>";
+    echo"<div id='socials-wrap'><ul>";
     foreach($socials as $social) {
             echo "<li class='mx-3'>
                     <a href='".$social['link']."' class='text-white text-decoration-none nav-link-custom'>
@@ -29,5 +29,5 @@
                     </a>
                   </li>";
         }
-                  echo"</div></div>";
+                  echo"</ul></div></div>";
 ?>

@@ -15,3 +15,13 @@
 
      
 
+export function PrikaziSakrij(id) {
+    let div = document.querySelector("#" + id);
+    if (div.classList.contains('hide')) {
+        div.classList.remove('hide');
+        div.classList.add('show');
+    } else {
+        div.classList.remove('show');
+        div.classList.add('hide');
+    }
+}

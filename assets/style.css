@@ -1,4 +1,4 @@
-
+@import url("css/footer.css");
 @import url("css/first_div.css");
 @import url("css/register.css");
 @import url("css/login.css");
@@ -28,19 +28,10 @@
     width: 30%!important;
 }
 
-#footer {
-    background-color: black;
-    display: flex; 
+a{
+    text-emphasis: none;
 }
 
-#links-wrap nav ul{
-    display: flex;
-    width: 40%;
-    flex-direction: column;
-}
 
-#socials-wrap{
-    width: 30%;
-}
 
  

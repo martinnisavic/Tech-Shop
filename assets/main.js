@@ -1,4 +1,4 @@
-import { changePicture } from './functions.js';
+import { changePicture, PrikaziSakrij } from './functions.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     let images = document.getElementsByClassName('product-inf-images');
@@ -15,5 +15,20 @@ document.addEventListener("DOMContentLoaded", function () {
         next_button.addEventListener("click", function () {
             currentIndex = changePicture(currentIndex + 1, imagesNumber, currentIndex, images);
         })
+    }
+
+
+    const btnProducts = document.querySelector('#products-profile-show');
+    if (btnProducts) {
+        btnProducts.addEventListener('click', function() {
+            PrikaziSakrij('products');
+        });
+    }
+
+    const btnUsers = document.querySelector('#users-profile-show');
+    if (btnUsers) {
+        btnUsers.addEventListener('click', function() {
+            PrikaziSakrij('users');
+        });
     }
 })

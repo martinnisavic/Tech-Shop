@@ -45,7 +45,7 @@ if ($db) {
             "errors" => $errors
         ];
     } else {
-        $query = "SELECT username,role FROM `user` WHERE email=:email AND password=:password";
+        $query = "SELECT username,role,id FROM `user` WHERE email=:email AND password=:password";
 
         $params = [
             ":email" => $email,
@@ -55,6 +55,7 @@ if ($db) {
         if ($user) {
             $_SESSION['role'] = $user['role'];
             $_SESSION['username'] = $user['username'];
+            $_SESSION['userID'] = $user['id'];
             $_SESSION['ulogovan'] = true;
             $response = [
                 "status" => "200",

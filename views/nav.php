@@ -5,7 +5,7 @@ $query = "SELECT * FROM `links` WHERE 1";
 $links = IzvrsiSelectUpit($query, true);
 echo "<div id='first-div'>";
 if ($links) {
-    echo "<div class='d-flex justify-content-around'><div>";
+    echo "<div class='d-flex justify-content-around'><div class='nav-meni'>";
     echo "<nav><ul>";
     $counter = 0;
     foreach ($links as $link) {
@@ -26,7 +26,7 @@ echo "<div id='logo-div'>
 
 
 if ($links) {
-    echo "<div>";
+    echo "<div class='nav-meni'>";
     echo "<nav><ul>";
     $counter = 0;
     $profil = false;

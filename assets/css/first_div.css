@@ -1,4 +1,4 @@
-#first-div{
+#first-div {
     height: 70vh;
     width: 100%;
     background-image: url('../img/laptop_closed.jpg');
@@ -6,27 +6,50 @@
     background-color: black;
 }
 
-#logo-div{
+ul {
+    list-style: none;
+}
+
+.nav-meni nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#logo-div {
     width: 30%;
-        justify-content: center;
+    justify-content: center;
     display: flex;
 }
 
-#logo-div img{
+#logo-div img {
     width: 10%;
 }
 
 
-#home-page-headline{
+#home-page-headline {
     width: 60%;
     margin: 0px auto;
     margin-top: 10%;
     display: flex;
+    background-color: rgba(red, 1);
     justify-content: center;
     flex-direction: column;
     align-items: center;
 }
 
-#home-page-headline button{
+#home-page-headline h1 a{
+    color: white;
+    text-decoration: none;
+}
+
+#home-page-headline button {
     width: 30%;
+    border: none;
+}
+
+#home-page-headline button a{
+    color: #000000;
+    text-decoration: none;
 }

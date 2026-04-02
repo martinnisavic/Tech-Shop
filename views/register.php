@@ -1,54 +1,29 @@
 <?php 
-
-echo "<div>
-        <h3>Register</h3>
-        <div class='d-flex justify-content-evenly flex-wrap'>
-        <div id='fiz-lice-btn-div'>
-            <button>Fizicko lice</button>
-        </div>
-        <div id='pravno-lice-btn-div'>
-            <button>Pravno lice</button>
-        </div>
-        </div>
-        ";
-        
 echo "
-    <div class='w-80 m-auto'>
-    <form id='fizicko-lice' class='w-30 show flex-wrap flex-column justify-content-center' action='provera.php' method='post'>
-        <label for='ime'>Ime</label>
-        <input type='text' name='ime' id='ime' class=''/>
-        <label for='prezime'>Prezime</label>
-        <input type='text' name='prezime' id='prezime' class=''/>
-        <label for='username'>Username</label>
-        <input type='text' name='username' id='username' class=''/>
-        <label for='broj-telefona'>Broj telefona</label>
-        <input type='text' name='broj-telefona' id='broj-telefona' class=''/>
-        <label for='email'>Email</label>
-        <input type='email' name='email' id='email' class=''/>
-        <label for='password'>Password</label>
-        <input type='password' name='password' id='password' class=''/>
-        <label for='conf-password'>Confirm password</label>
-        <input type='password' name='conf-password' id='conf-password' class=''/><br/>
-        <input type='submit' name='fiz-lice-submit' id=''/>
+<div class='w-80 m-auto'>
+    <h3>Register</h3>
+    <form action='funkcijePhp/registerObrada.php' method='POST'>
+        <input type='text' name='ime' placeholder='Vaše ime' required>
+        <input type='text' name='prezime' placeholder='Vaše prezime' required>
+        <input type='text' name='username' placeholder='Korisničko ime' required>
+        <input type='email' name='email' placeholder='Email' required>
+        <input type='password' name='password' placeholder='Lozinka' required>
+        <input type='password' name='password_confirm' placeholder='Potvrdite lozinku' required>
+        <input type='text' name='telefon' placeholder='Telefon (06x...)' required>
+        
+        <input type='text' name='ime_firme' placeholder='Ime firme (opciono)'>
 
+        <select name='grad'>
+            <option value='1'>Beograd</option>
+            <option value='2'>Novi Sad</option>
+        </select>
+        
+        <div class='pol-izbor'>
+            <label><input type='radio' name='pol' value='M'> Muški</label>
+            <label><input type='radio' name='pol' value='Z'> Ženski</label>
+        </div>
+
+        <button type='submit'>Registruj se</button>
     </form>
-";
-
-
-echo "<form id='pravno-lice' class='hide flex-wrap flex-column' action='provera.php' method='post'>
-
-        <input type='text' name='ime' id='ime' class=''/><br/>
-        <input type='text' name='prezime' id='prezime' class=''/><br/>
-        <input type='text' name='username' id='username' class=''/><br/>
-        <input type='text' name='broj-telefona' id='broj-telefona' class=''/><br/>
-        <input type='email' name='email' id='email' class=''/><br/>
-        <input type='password' name='password' id='password' class=''/><br/>
-        <input type='password' name='conf-password' id='conf-password' class=''/><br/>
-        <input type='submit' name='pravno-lice-submit' id=''/>
-
-    </form>
-    </div>
-    </div>";
-
-
+</div>";
 ?>

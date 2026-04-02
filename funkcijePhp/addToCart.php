@@ -6,11 +6,21 @@ if (isset($_GET['productToCartId'])) {
         $_SESSION['cart'] = [];
     }
 
-    if (!isset($_SESSION['cart'][$id])) {
-        $_SESSION['cart'][$id] = 1;
+
+
+if (isset($_GET['productToCartId'])) {
+    $id = $_GET['productToCartId'];
+
+    // Ako proizvod već postoji, povećaj za 1, ako ne, postavi na 1
+    if (isset($_SESSION['cart'][$id])) {
+        $_SESSION['cart'][$id] += 1; 
     } else {
-        $_SESSION['cart'][$id]++;
+        $_SESSION['cart'][$id] = 1;
     }
+
+    header("Location: ../index.php?stranica=cart.php");
+    exit();
+}
 }
 
 if (isset($_SERVER['HTTP_REFERER']) && !empty($_SERVER['HTTP_REFERER'])) {
