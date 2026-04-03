@@ -54,6 +54,12 @@ require_once("views/head.php");
             case 'buy.php':
                 require_once("views/buy.php");
                 break;
+                case 'edit_profile.php':
+                require_once("views/edit_profile.php");
+                break;
+            case 'verifikacija': 
+        require_once("views//verifikacija.php"); 
+        break;
             default:
 
                 require_once("views/new_arrivals.php");
@@ -66,6 +72,7 @@ require_once("views/head.php");
     ?>
     <script type="module" src="assets/main.js"></script>
     <script src="assets/logIn.js"></script>
+    <script src="assets/register.js"></script>
 </body>
 
 </html>

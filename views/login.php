@@ -5,7 +5,7 @@ echo "<div class='container my-5'>
         <div class='border p-4 shadow-sm bg-white rounded'>
             <h2 class='text-center mb-4'>Prijava</h2>
             
-            <form id='loginForma' action='logic/obrada_login.php' method='POST'>
+            <form id='loginForma' method='POST'>
                 <div class='mb-3'>
                     <label for='email' class='form-label'>Email adresa</label>
                     <input type='email' name='email' id='email' class='form-control' placeholder='primer@mail.com' required/>

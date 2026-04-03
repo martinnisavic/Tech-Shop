@@ -39,30 +39,39 @@ loginForma.addEventListener("submit", function (e) {
             return odgovor.json();
         })
         .then(data => {
-            if (data.status == "200") {
-                window.location.href = "../Tech-Shop/index.php";
-            }
-            else {
-                if (data.errors) {
-                    if (data.errors.email) {
-                        document.querySelector('#error-email-login').textContent = data.errors.email;
-                        console.log('greska mail')
-                    }
-                    if (data.errors.password) {
-                        document.querySelector('#error-password-login').textContent = data.errors.password;
-                        console.log('greska pass]')
-                    }
-                    if (data.errors.common) {
-                        document.querySelector('#error-login').textContent = data.errors.common;
-                        console.log('greska common')
-                    }
-                }
-                else {
-                    console.log('greska nije status 200')
-                    document.querySelector('#error-login').textContent = data.message || "Došlo je do greške.";
-                }
-            }
-        });
+    console.log(data); // DODAJ OVO DA VIDIŠ CEO ODGOVOR U KONZOLI
+    if (data.status == "200") {
+        window.location.href = "index.php";
+    } else {
+        // Ispiši tačnu poruku iz PHP-a u onaj crveni error label
+        document.querySelector('#error-login').textContent = data.message;
+    }
+});
+        // .then(data => {
+        //     if (data.status == "200") {
+        //         window.location.href = "../Tech-Shop/index.php";
+        //     }
+        //     else {
+        //         if (data.errors) {
+        //             if (data.errors.email) {
+        //                 document.querySelector('#error-email-login').textContent = data.errors.email;
+        //                 console.log('greska mail')
+        //             }
+        //             if (data.errors.password) {
+        //                 document.querySelector('#error-password-login').textContent = data.errors.password;
+        //                 console.log('greska pass]')
+        //             }
+        //             if (data.errors.common) {
+        //                 document.querySelector('#error-login').textContent = data.errors.common;
+        //                 console.log('greska common')
+        //             }
+        //         }
+        //         else {
+        //             console.log('greska nije status 200')
+        //             document.querySelector('#error-login').textContent = data.message || "Došlo je do greške.";
+        //         }
+        //     }
+        // });
 
 
 });

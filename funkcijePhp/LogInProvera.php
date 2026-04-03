@@ -32,11 +32,13 @@ if ($db) {
         $errors['password'] = "Password je obavezan";
     }
     if (isset($_POST['password'])) {
-        $pass = $_POST['password'];
-        if (!preg_match($regExPassword, $pass)) {
-            $errors['password'] = "Password je u losem formatu";
-        }
+    // Moraš dodeliti vrednost varijabli $pass
+    $pass = trim($_POST['password']); 
+
+    if (!preg_match($regExPassword, $pass)) {
+        $errors['password'] = "Password je u losem formatu";
     }
+}
 
     if (!empty($errors)) {
         $response = [
@@ -45,27 +47,37 @@ if ($db) {
             "errors" => $errors
         ];
     } else {
-        $query = "SELECT username,role,id FROM `user` WHERE email=:email AND password=:password";
-
+        $query = "SELECT email,username,role,id,password FROM `user` WHERE email=:email AND is_active = 1";
         $params = [
-            ":email" => $email,
-            ":password" => $pass
+            ":email" => $email
         ];
         $user = IzvrsiSelectUpit($query, false,$params);
-        if ($user) {
-            $_SESSION['role'] = $user['role'];
-            $_SESSION['username'] = $user['username'];
-            $_SESSION['userID'] = $user['id'];
-            $_SESSION['ulogovan'] = true;
-            $response = [
-                "status" => "200",
-                "message" => "nema greske"
-            ];
-        } else {
+
+
+
+       if ($user) {
+    $ukucanaLozinka = trim($_POST['password']);
+    $hesIzBaze = $user['password']; // Ovo je ono što si izvukao iz kolone 'password'
+    if (password_verify($ukucanaLozinka, $hesIzBaze)) {
+        // LOZINKA JE TAČNA
+        $_SESSION['ulogovan'] = true;
+        $_SESSION['userID'] = $user['id'];
+        $_SESSION['role'] = $user['role'];
+        $_SESSION['username'] = $user['username'];
+        echo json_encode(["status" => "200", "message" => "Uspešan login!"]);
+        
+        exit();
+    } else {
+        // LOZINKA NIJE TAČNA
+        http_response_code(401);
+        echo json_encode(["status" => "401", "message" => "Neispravna lozinka."]);
+    }
+}
+         else {
             http_response_code(401);
             $response = [
                 "status" => "401",
-                "message" => "Neispravan email ili password",
+                "message" => "Neispravan email ",
                 "errors" => $errors
             ];
         }

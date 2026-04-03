@@ -29,7 +29,7 @@ if ($links) {
     echo "<div class='nav-meni'>";
     echo "<nav><ul>";
     $counter = 0;
-    $profil = false;
+    $profile = false;
     foreach ($links as $link) {
         if ($counter >= 2) {
             $profile = isset($_SESSION['ulogovan']);

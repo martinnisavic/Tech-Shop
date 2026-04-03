@@ -1,47 +1,78 @@
 <?php
-// Uključujemo konekciju (proveri putanju do tvog fajla)
-include("../konekcija/konekcija.php");
-if ($db) {
 
 
-echo "<div style='text-align:center; margin-top:50px; font-family:Arial;'>";
+include_once("konekcija/konekcija.php"); 
 
 if (isset($_GET['token'])) {
     $token = $_GET['token'];
+    
+    // TEST: Ispiši token iz URL-a da ga uporediš sa onim u bazi
+    // echo "Token iz linka: " . $token; 
 
-    try {
-        // 1. Proveravamo da li postoji korisnik sa tim tokenom i da li je još neaktivan
-        $proveraSql = "SELECT id FROM user WHERE verification_token = :token AND is_active = 0";
-        $stmt = $db->prepare($proveraSql);
-        $stmt->execute([':token' => $token]);
-        $korisnik = $stmt->fetch();
+    $upitProvera = "SELECT id, is_active, verification_token FROM user WHERE verification_token = :token";
+    $stmtProvera = $db->prepare($upitProvera);
+    $stmtProvera->bindValue(':token', $token);
+    $stmtProvera->execute();
+    
+    $user = $stmtProvera->fetch(PDO::FETCH_ASSOC);
 
-        if ($korisnik) {
-            // 2. Ako postoji, menjamo is_active na 1 i brišemo token (ne treba nam više)
-            $updateSql = "UPDATE user SET is_active = 1, verification_token = NULL WHERE id = :id";
-            $updateStmt = $db->prepare($updateSql);
-            $updateStmt->execute([':id' => $korisnik['id']]);
-
-            echo "<h2>Uspešna aktivacija!</h2>";
-            echo "<p>Vaš nalog je sada aktivan. Možete se ulogovati na svoj profil.</p>";
-            echo "<a href='index.php?stranica=login.php' style='padding:10px 20px; background:#28a745; color:white; text-decoration:none; border-radius:5px;'>Idi na Login</a>";
+    if ($user) {
+        if ($user['is_active'] == 1) {
+            echo "Nalog je već aktiviran.";
         } else {
-            // Token ne postoji ili je korisnik već aktiviran
-            echo "<h2>Greška!</h2>";
-            echo "<p>Link je neispravan, istekao ili ste već aktivirali nalog.</p>";
-            echo "<a href='index.php'>Nazad na početnu</a>";
+            // Sad radi UPDATE
+            $upitAktivacija = "UPDATE user SET is_active = 1, verification_token = NULL WHERE id = :id";
+            $stmtAktivacija = $db->prepare($upitAktivacija);
+            $stmtAktivacija->bindValue(':id', $user['id']);
+            $stmtAktivacija->execute();
+            echo "Uspešna aktivacija!";
         }
-    } catch (PDOException $e) {
-        echo "<h2>Problem sa serverom</h2>";
-        echo "Greška: " . $e->getMessage();
+    } else {
+        echo "Token nije pronađen u bazi.";
     }
 } else {
-    // Ako neko pokuša da otvori verifikacija.php bez tokena u URL-u
-    echo "<h2>Pristup odbijen</h2>";
-    echo "<p>Nedostaje verifikacioni kod.</p>";
-    header("Refresh:3; url=index.php");
+    echo "Nedostaje token u URL-u.";
 }
-}
-echo "<h2>Losa putanja</h2>";
-echo "</div>";
+
+
+// if (isset($_GET['token'])) {
+//     $token = $_GET['token'];
+
+//     // 2. Provera da li token uopšte postoji u bazi
+//     $upitProvera = "SELECT id, username FROM user WHERE verification_token = :token AND is_active = 0";
+//     $stmtProvera = $db->prepare($upitProvera);
+//     $stmtProvera->bindValue(':token', $token);
+//     $stmtProvera->execute();
+
+//     if ($stmtProvera->rowCount() > 0) {
+//         // Token je ispravan, korisnik je pronađen i još uvek nije aktiviran
+        
+//         // 3. Aktivacija korisnika
+//         // Setujemo is_active na 1 i brišemo token da ne može ponovo da se koristi
+//         $upitAktivacija = "UPDATE user SET is_active = 1, verification_token = NULL WHERE verification_token = :token";
+//         $stmtAktivacija = $db->prepare($upitAktivacija);
+//         $stmtAktivacija->bindValue(':token', $token);
+        
+//         if ($stmtAktivacija->execute()) {
+//             echo "
+//             <div class='alert alert-success text-center m-5'>
+//                 <h2 style='color: green;'>Uspešna aktivacija!</h2>
+//                 <p>Vaš nalog je sada aktivan. Možete se ulogovati na stranici za <a href='index.php?stranica=login'>prijavu</a>.</p>
+//             </div>";
+//         } else {
+//             echo "<div class='alert alert-danger text-center m-5'>Greška prilikom aktivacije naloga. Pokušajte ponovo.</div>";
+//         }
+//     } else {
+//         // Token ne postoji ili je nalog već aktiviran
+//         echo "
+//         <div class='alert alert-warning text-center m-5'>
+//             <h2>Nevažeći link</h2>
+//             <p>Link za verifikaciju je istekao, neispravan ili ste već aktivirali svoj nalog.</p>
+//             <a href='index.php'>Vratite se na početnu</a>
+//         </div>";
+//     }
+// } else {
+//     // Ako neko pokuša da pristupi stranici bez tokena u URL-u
+//     echo "<div class='alert alert-danger text-center m-5'>Pristup odbijen. Nedostaje verifikacioni kod.</div>";
+// }
 ?>

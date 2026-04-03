@@ -64,7 +64,7 @@ if ($db) {
         ";
         foreach ($result as $u) {
             echo "<tr>
-                    <td>".$u['ime']."</td>
+                    <td>" . $u['ime'] . "</td>
                     <td>" . $u['prezime'] . "</td>
                     <td>" . $u['username'] . "</td>
                     <td>" . $u['email'] . "</td>
@@ -79,7 +79,48 @@ if ($db) {
 
         echo "</div>";
     } elseif ($role == 'user') {
-    } else {
-        $errors["konekcija sa bazom"] = "Nema konekcije sa bazom";
+
+        // 1. Dohvatanje ID-ja ulogovanog korisnika iz sesije
+        // Proveri da li ti je ključ tačno 'id', ako nije, prilagodi (npr. $_SESSION['ulogovan']['id'])
+        $userId = $_SESSION['userID'];
+
+        // 2. Upit za tog konkretnog korisnika
+        $query = "SELECT * FROM user WHERE id = :id";
+        $u = IzvrsiSelectUpit($query, false, [':id' => $userId]);
+
+        if ($u) {
+            echo "<h3>Vaši podaci</h3>";
+            echo "<div id='user-info'>
+                <table class='table table-bordered'>
+                    <tr>
+                        <th>Ime</th>
+                        <td>" . $u['ime'] . "</td>
+                    </tr>
+                    <tr>
+                        <th>Prezime</th>
+                        <td>" . $u['prezime'] . "</td>
+                    </tr>
+                    <tr>
+                        <th>Korisničko ime</th>
+                        <td>" . $u['username'] . "</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>" . $u['email'] . "</td>
+                    </tr>
+                    <tr>
+                        <th>Telefon</th>
+                        <td>" . $u['telefon'] . "</td>
+                    </tr>
+                    <tr>
+                        <th>Firma</th>
+                        <td>" . (!empty($u['ime firme']) ? $u['ime firme'] : "/") . "</td>
+                    </tr>
+                </table>
+                <p><a href='index.php?stranica=edit_profile.php' class='btn btn-primary'>Izmeni podatke</a></p>
+            </div>";
+        }
     }
+} else {
+    $errors["konekcija sa bazom"] = "Nema konekcije sa bazom";
 }

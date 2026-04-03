@@ -2,26 +2,43 @@
 echo "
 <div class='w-80 m-auto'>
     <h3>Register</h3>
-    <form action='funkcijePhp/registerObrada.php' method='POST'>
-        <input type='text' name='ime' placeholder='Vaše ime' required>
-        <input type='text' name='prezime' placeholder='Vaše prezime' required>
-        <input type='text' name='username' placeholder='Korisničko ime' required>
-        <input type='email' name='email' placeholder='Email' required>
-        <input type='password' name='password' placeholder='Lozinka' required>
-        <input type='password' name='password_confirm' placeholder='Potvrdite lozinku' required>
-        <input type='text' name='telefon' placeholder='Telefon (06x...)' required>
+    <form id='regForma' method='POST'>
         
-        <input type='text' name='ime_firme' placeholder='Ime firme (opciono)'>
+        <input type='text' id='ime' name='ime' placeholder='Vaše ime' required>
+        <span id='error-ime-reg' class='text-danger'></span>
 
-        <select name='grad'>
+        <input type='text' id='prezime' name='prezime' placeholder='Vaše prezime' required>
+        <span id='error-prezime-reg' class='text-danger'></span>
+
+        <input type='text' id='username' name='username' placeholder='Korisničko ime' required>
+        <span id='error-user-reg' class='text-danger'></span>
+
+        <input type='email' id='email' name='email' placeholder='Email' required>
+        <span id='error-email-reg' class='text-danger'></span>
+
+        <input type='password' id='password' name='password' placeholder='Lozinka' required>
+        <span id='error-pass-reg' class='text-danger'></span>
+
+        <input type='password' id='password_confirm' name='password_confirm' placeholder='Potvrdite lozinku' required>
+        <span id='error-passconf-reg' class='text-danger'></span>
+
+        <input type='text' id='telefon' name='telefon' placeholder='Telefon (06x...)' required>
+        <span id='error-tel-reg' class='text-danger'></span>
+        
+        <input type='text' id='ime_firme' name='ime_firme' placeholder='Ime firme (opciono)'>
+
+        <select name='grad' id='grad'>
+            <option value=''>Izaberite grad</option>
             <option value='1'>Beograd</option>
             <option value='2'>Novi Sad</option>
         </select>
         
         <div class='pol-izbor'>
-            <label><input type='radio' name='pol' value='M'> Muški</label>
+            <label><input type='radio' name='pol' value='M' checked> Muški</label>
             <label><input type='radio' name='pol' value='Z'> Ženski</label>
         </div>
+
+        <div id='error-general-reg' class='text-danger' style='margin-bottom: 10px;'></div>
 
         <button type='submit'>Registruj se</button>
     </form>

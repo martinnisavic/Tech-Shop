@@ -1,4 +1,4 @@
-import { changePicture, PrikaziSakrij } from './functions.js';
+import { changePicture, PrikaziSakrij, updateUserProfile } from './functions.js';
 
 document.addEventListener("DOMContentLoaded", function () {
     let images = document.getElementsByClassName('product-inf-images');
@@ -32,3 +32,32 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 })
+
+
+document.addEventListener("click", function(e) {
+    if (e.target && e.target.id === "btnUpdateProfile") {
+        
+        // Prikupljanje podataka iz input polja
+        const podaci = {
+            ime: document.querySelector("#tbIme").value,
+            prezime: document.querySelector("#tbPrezime").value,
+            telefon: document.querySelector("#tbTelefon").value,
+            firma: document.querySelector("#tbFirma").value
+        };
+
+        // Pozivanje eksportovane funkcije
+        updateUserProfile(podaci).then(data => {
+            const resDiv = document.querySelector("#editResponse");
+            
+            if (data.status == 200) {
+                resDiv.innerHTML = `<p class='alert alert-success'>${data.message}</p>`;
+                // Preusmeravanje na profil nakon 2 sekunde
+                setTimeout(() => {
+                    window.location.href = "index.php?stranica=profile.php";
+                }, 2000);
+            } else {
+                resDiv.innerHTML = `<p class='alert alert-danger'>${data.message}</p>`;
+            }
+        });
+    }
+});
